@@ -12,6 +12,31 @@ You can access the live API at the following URL:
 https://jobboardapi-sfpq.onrender.com/api
 
 
+## User Authentication
+
+To access the protected endpoints of the Job Board API, users must first register and log in to receive a JSON Web Token (JWT) for authentication.
+
+### 1. Register a User
+
+**Endpoint**: `POST /api/auth/register`  
+**Request Body**:
+```json
+{
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+```
+### 2. Login a User
+
+**Endpoint**: POST /api/auth/login
+**Request Body**:
+```json
+{
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+```
+
 ## API Endpoints
 
 ### Job Listings
