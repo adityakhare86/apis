@@ -126,3 +126,13 @@ curl -X POST http://localhost:5000/api/jobs \
   "experienceLevel": "junior"
 }'
 ```
+
+## Postman Collection
+
+A Postman collection is provided to demonstrate the API endpoints. You can import it into your Postman application to test the API easily.
+
+### Importing the Collection
+1. Open Postman.
+2. Click on the "Import" button in the top left corner.
+3. Select "Upload Files" and choose the `JobBoardAPI.postman_collection.json` file.
+4. The collection will be added to your Postman workspace, and you can start testing the API endpoints.
