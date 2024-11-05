@@ -38,17 +38,6 @@ exports.getFilteredJobs = async (req, res) => {
   }
 };
 
-// Get a specific job by ID
-exports.getJobById = async (req, res) => {
-  try {
-    const job = await Job.findById(req.params.id);
-    if (!job) return res.status(404).json({ error: 'Job not found' });
-    res.json(job);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
 // Update a job listing
 exports.updateJob = async (req, res) => {
   try {
