@@ -14,7 +14,11 @@ exports.createApplication = async (req, res) => {
 // Retrieve all applications for a specific job
 exports.getApplicationsByJob = async (req, res) => {
   try {
-    const applications = await Application.find({ appliedJobId: req.params.jobId });
+    const { page = 1, limit = 10 } = req.query;
+    const applications = await Application.find({ appliedJobId: req.params.jobId })
+      .skip((page - 1) * limit)
+      .limit(parseInt(limit));
+
     res.json(applications);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -25,13 +29,17 @@ exports.getApplicationsByJob = async (req, res) => {
 exports.filterApplications = async (req, res) => {
   try {
     const { candidateName, status, experience } = req.query;
+    const { page = 1, limit = 10 } = req.query;
     const filter = {};
 
     if (candidateName) filter.candidateName = new RegExp(candidateName, 'i');
     if (status) filter.status = status;
     if (experience) filter.experience = { $gte: experience };
 
-    const applications = await Application.find(filter);
+    const applications = await Application.find(filter)
+    .skip((page - 1) * limit)
+    .limit(parseInt(limit));
+    
     res.json(applications);
   } catch (error) {
     res.status(500).json({ error: error.message });

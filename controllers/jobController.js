@@ -14,7 +14,10 @@ exports.createJob = async (req, res) => {
 // Retrieve all job listings without filters
 exports.getAllJobs = async (req, res) => {
   try {
-    const jobs = await Job.find();
+    const { page = 1, limit = 10 } = req.query;
+    const jobs = await Job.find()
+    .skip((page - 1) * limit)
+    .limit(parseInt(limit));
     res.json(jobs);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -25,13 +28,17 @@ exports.getAllJobs = async (req, res) => {
 exports.getFilteredJobs = async (req, res) => {
   try {
     const { title, location, skills } = req.query;
+    const { page = 1, limit = 10 } = req.query;
     const filter = {};
 
     if (title) filter.title = new RegExp(title, 'i');
     if (location) filter.location = new RegExp(location, 'i');
     if (skills) filter.skills = { $in: skills.split(',') };
 
-    const jobs = await Job.find(filter);
+    const jobs = await Job.find(filter)
+    .skip((page - 1) * limit)
+    .limit(parseInt(limit));
+
     res.json(jobs);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -63,7 +70,8 @@ exports.deleteJob = async (req, res) => {
 exports.searchJobs = async (req, res) => {
   try {
     const { keyword } = req.query;
-    
+    const { page = 1, limit = 10 } = req.query;
+
     if (!keyword) {
       return res.status(400).json({ error: 'Keyword is required for search.' });
     }
@@ -74,7 +82,9 @@ exports.searchJobs = async (req, res) => {
         { title: searchRegex },
         { description: searchRegex }
       ]
-    });
+    })
+    .skip((page - 1) * limit)
+    .limit(parseInt(limit));
 
     res.json(jobs);
   } catch (error) {
