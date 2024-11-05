@@ -66,9 +66,6 @@ To access the protected endpoints of the Job Board API, users must first registe
   - `GET /api/jobs/search`
   - **Query Parameter**: `keyword`
 
-- **Get a Specific Job by ID**
-  - `GET /api/jobs/:id`
-
 - **Update a Job Listing**
   - `PUT /api/jobs/:id`
   - **Request Body**: Same as create job.
