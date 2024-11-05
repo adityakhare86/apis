@@ -1,0 +1,389 @@
+{
+	"info": {
+		"_postman_id": "f2c0da4f-046d-4bed-8f83-1ab266eec0c6",
+		"name": "JobBoard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35289383"
+	},
+	"item": [
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "Create job",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI5OWY2ZTQ4MDBhZDExZjJmY2Y1Y2MiLCJpYXQiOjE3MzA3OTM2NTYsImV4cCI6MTczMDc5NzI1Nn0.23zgRsZMwPV6VS47cRvfDSh6Btu7iC7lo1NKg653m2M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Software Engineer\",\r\n  \"description\": \"Develops, tests, and maintains software applications.\",\r\n  \"skills\": [\"JavaScript\", \"Node.js\", \"Express\"],\r\n  \"location\": \"Remote\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/jobs",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve all jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/jobs/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"jobs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Job",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI5OWY2ZTQ4MDBhZDExZjJmY2Y1Y2MiLCJpYXQiOjE3MzA3ODU5MzYsImV4cCI6MTczMDc4OTUzNn0.t732WXX3HAKKcG27DuCTFXHmFF0xag3ZZeF1HCzi3yI",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Senior Software Engineer\",\r\n  \"experienceLevel\": \"Senior\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/jobs/6729ad1863e9da77539e6138",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"jobs",
+								"6729ad1863e9da77539e6138"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Job",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI5OWY2ZTQ4MDBhZDExZjJmY2Y1Y2MiLCJpYXQiOjE3MzA3ODU5MzYsImV4cCI6MTczMDc4OTUzNn0.t732WXX3HAKKcG27DuCTFXHmFF0xag3ZZeF1HCzi3yI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5000/api/jobs/6729ad1863e9da77539e6138",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"jobs",
+								"6729ad1863e9da77539e6138"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Job",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/jobs?title=Software",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Software"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve jobs with filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/jobs/filter?title=Engineer&location=Remote&skills=JavaScript",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"jobs",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Engineer"
+								},
+								{
+									"key": "location",
+									"value": "Remote"
+								},
+								{
+									"key": "skills",
+									"value": "JavaScript"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search in title and description of jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/jobs/search?keyword=maintains",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"jobs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "maintains"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Applications",
+			"item": [
+				{
+					"name": "Submit new application",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI5OWY2ZTQ4MDBhZDExZjJmY2Y1Y2MiLCJpYXQiOjE3MzA3ODU5MzYsImV4cCI6MTczMDc4OTUzNn0.t732WXX3HAKKcG27DuCTFXHmFF0xag3ZZeF1HCzi3yI",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"candidateName\": \"John Doe\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"experience\": 3,\r\n  \"appliedJobId\": \"6729bb489ebecbeead108d6a\",\r\n  \"status\": \"pending\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/applications",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All Applications for a Job",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI5OWY2ZTQ4MDBhZDExZjJmY2Y1Y2MiLCJpYXQiOjE3MzA3ODU5MzYsImV4cCI6MTczMDc4OTUzNn0.t732WXX3HAKKcG27DuCTFXHmFF0xag3ZZeF1HCzi3yI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5000/api/applications/6729bb489ebecbeead108d6a",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"applications",
+								"6729bb489ebecbeead108d6a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All Applications with Filtering",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzI5OWY2ZTQ4MDBhZDExZjJmY2Y1Y2MiLCJpYXQiOjE3MzA3ODk3NTMsImV4cCI6MTczMDc5MzM1M30.xPYn_StjJ6TvTL84UhvUhrFjMQD6JHC7MB9n0CZpNXk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5000/api/applications/filter?status=reviewed&candidateName=John",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"applications",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "reviewed"
+								},
+								{
+									"key": "candidateName",
+									"value": "John"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"test@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
