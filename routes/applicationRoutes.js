@@ -6,8 +6,8 @@ const { validateApplication } = require('../middlewares/validation');
 const { validateRequest } = require('../middlewares/validateRequest');
 
 // Application routes
-router.post('/', authenticateToken, validateApplication, validateRequest, applicationController.submitApplication); // Submit a new application
-router.get('/:jobId', applicationController.getApplicationsForJob);                                                  // Retrieve all applications for a job
+router.post('/', authenticateToken, validateApplication, validateRequest, applicationController.createApplication); // Submit a new application
+router.get('/:jobId', applicationController.getApplicationsByJob);                                                  // Retrieve all applications for a job
 router.get('/filter', applicationController.filterApplications);                                                     // Filter applications
 
 module.exports = router;
