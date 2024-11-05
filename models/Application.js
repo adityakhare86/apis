@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const ApplicationSchema = new mongoose.Schema({
     candidateName: String,
     email: String,
