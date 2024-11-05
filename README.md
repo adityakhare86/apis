@@ -86,3 +86,43 @@ To set up the API on your local machine, follow these steps:
 ```bash
 git clone https://github.com/yourusername/job-board-api.git
 cd job-board-api
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Set Up Environment Variables
+
+Create a .env file in the root of your project and add your environment variables:
+```makefile
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
+
+### Run the Application
+```bash
+npm start
+```
+
+The API should now be running on http://localhost:5000. 
+
+## Testing the API
+
+You can use tools like Postman or curl to test the API endpoints.   
+### Example Request
+To create a new job listing:
+
+```bash
+curl -X POST http://localhost:5000/api/jobs \
+-H "Content-Type: application/json" \
+-d '{
+  "title": "Software Engineer",
+  "description": "Develop software applications.",
+  "skills": ["JavaScript", "Node.js"],
+  "location": "Remote",
+  "experienceLevel": "junior"
+}'
+```
